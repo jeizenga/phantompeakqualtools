@@ -535,10 +535,6 @@ check.replace.flag <- function(params){
 # MAIN FUNCTION
 # #############################################################################
 
-# Load SPP library
-library(spp)
-library(caTools)
-
 # Check number of arguments
 minargs = 1;
 maxargs = 17;
@@ -546,6 +542,8 @@ if (nargs < minargs | nargs > maxargs) {
 	print.usage()
 	q(save="no",status=1)
 }
+
+library(caTools)
 
 # Parse arguments
 # iparams$chip.file
@@ -649,6 +647,9 @@ if (! is.na(iparams$control.file)) {
 		file.remove(curr.control.file)
 	}
 }
+
+# Load SPP library
+library(spp)
 
 # Read ChIP tagAlign/BAM files
 cat("Reading ChIP tagAlign/BAM file",iparams$chip.file,"\n",file=stdout())
